@@ -1,3 +1,5 @@
+import mysql.connector
+from mysql.connector import Error
 from prettytable import PrettyTable
 tblForm = PrettyTable()
 
@@ -8,7 +10,7 @@ print("-------------------------------------------------------------------")
 enter = input("Apakah anda yakin ingin melakukan pengadaan barang?...(Y/N)\n")
 jumlahPengadaan = int(input("Berapa form pengadaan barang?...\n"))
 
-print("\nLoading...\n")
+print("\nLoading...")
 
 listProcurement = []
 totalHarga = []
@@ -17,6 +19,11 @@ class PengadaanBarang:
     def barang(brg):
         global totalHarga
         global tblForm
+        global noPO
+        global namaProduk
+        global jumlahProduk
+        global danaRequested
+        global hargaBarang
         print("-------------------------------------------------------------------")
         print("                          eBPM Procurement")
         print("-------------------------------------------------------------------")
@@ -32,9 +39,10 @@ class PengadaanBarang:
     
 def startProgram():
     for i in range(jumlahPengadaan):
-        print ("Form Pengadaan ke - " + str(i+1))
+        print ("\nForm Pengadaan ke - " + str(i+1))
         PengadaanBarang().barang()
         Sum = sum(totalHarga)
+        sqlQuery()
     print("\nComputing... Please Wait... Creating Form....")
     print("-------------------------------------------------------------------")
     print("                         eBPM Procurement")
@@ -42,6 +50,30 @@ def startProgram():
     print(tblForm)
     print("Total Biaya Pengadaan Barang : Rp.",'{:,}'.format(Sum))
     print("Thank You For Using Our Program, Please wait for Approval by Directors.\n")
+
+def sqlQuery():
+    try:
+        connection = mysql.connector.connect(host='localhost',
+                                            database='ebpm',
+                                            user='root',
+                                            password='password')
+
+        mySql_insert_query = """INSERT INTO penjualankelompok1 (id, noPO, namaProduk, jumlahProduk, dana, hargaProduk) 
+                           VALUES 
+                           (NULL, %s, %s, %s, %s, %s) """ % (noPO, namaProduk, jumlahProduk, danaRequested, hargaBarang)
+        cursor = connection.cursor()
+        cursor.execute(mySql_insert_query)
+        connection.commit()
+        print(cursor.rowcount, "Record inserted successfully")
+        cursor.close()
+
+    except mysql.connector.Error as error:
+            print("Failed to insert record{}".format(error))
+
+    finally:
+        if connection.is_connected():
+            connection.close()
+            print("MySQL connection is closed")
 
 if(enter=="Y" or enter=="y"):
     startProgram()

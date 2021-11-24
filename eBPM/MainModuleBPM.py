@@ -1,4 +1,6 @@
-print("Welcome to e-BPM")
+print("-------------------------------------------------------------------")
+print("                    Welcome to eBPM Procurement")
+print("-------------------------------------------------------------------")
 Enter = input("Tekan Enter Untuk Melanjutkan...")
 
 from prettytable import PrettyTable
@@ -11,13 +13,13 @@ tableInfo.add_row(["BPM3","Pembelian Barang"])
 
 print(tableInfo)
 
-userInputChoice = input("Ketik ID Program yang ingin dijalankan...")
+userInputChoice = input("Ketik ID Program yang ingin dijalankan...\n")
 
-if (userInputChoice=="BPM1" or userInputChoice=="bpm1\n"):
+if (userInputChoice=="BPM1" or userInputChoice=="bpm1"or userInputChoice=="Bpm2"or userInputChoice=="bpM2"or userInputChoice=="BPm2"):
     from classPengadaaneBPM import PengadaanBarang
-elif (userInputChoice=="BPM2" or userInputChoice=="bpm2"):
+elif (userInputChoice=="BPM2" or userInputChoice=="bpm2" or userInputChoice=="Bpm2" or userInputChoice=="Bpm2"or userInputChoice=="bpM2"):
     print()
-elif (userInputChoice=="BPM2" or userInputChoice=="bpm2"):
-    print()
+elif (userInputChoice=="BPM3" or userInputChoice=="bpm3" or userInputChoice=="Bpm3" or userInputChoice=="bPm3"or userInputChoice=="BPm2"):
+    from classPembelianeBPM import PembelianBarang
 else:
     print("Error occured, please try again...")
