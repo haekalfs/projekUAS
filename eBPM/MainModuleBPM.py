@@ -16,10 +16,10 @@ print(tableInfo)
 userInputChoice = input("Ketik ID Program yang ingin dijalankan...\n")
 
 if (userInputChoice=="BPM1" or userInputChoice=="bpm1"or userInputChoice=="Bpm2"or userInputChoice=="bpM2"or userInputChoice=="BPm2"):
-    from classPengadaaneBPM import PengadaanBarang
+    import classPengadaaneBPM
 elif (userInputChoice=="BPM2" or userInputChoice=="bpm2" or userInputChoice=="Bpm2" or userInputChoice=="Bpm2"or userInputChoice=="bpM2"):
-    from classApprovaleBPM import ApprovalBarang
+    import classApprovaleBPM
 elif (userInputChoice=="BPM3" or userInputChoice=="bpm3" or userInputChoice=="Bpm3" or userInputChoice=="bPm3"or userInputChoice=="BPm2"):
-    from classPembelianeBPM import PembelianBarang
+    import classPembelianeBPM
 else:
     print("Error occured, please try again...")
