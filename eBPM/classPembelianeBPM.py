@@ -4,10 +4,10 @@ import mysql.connector
 tblList = PrettyTable()
 
 print("-------------------------------------------------------------------")
-print("                    Welcome to eBPM Pembelian")
+print("                    Welcome to eBPM Approval")
 print("-------------------------------------------------------------------")
 
-userChoice = input("Apakah anda yakin ingin melakukan pembelian barang?...(Y/N)\n")
+userChoice = input("Apakah anda ingin melakukan proses Approval Pengadaan Barang?...(Y/N)\n")
 
 enter = input("Tekan enter untuk melanjutkan...\n")
 
@@ -26,7 +26,7 @@ class PembelianBarang:
                 cursor.execute(sql_select_Query)
                 # get all records
                 records = cursor.fetchall()
-                print("Jumlah List Pengadaan Barang yang akan dibeli :", cursor.rowcount)
+                print("Jumlah List Pengadaan Barang yang direquest :", cursor.rowcount)
 
                 print("\nPrinting....")
                 tblList.field_names = ("ID","Nomor PO", "Nama Barang", "Jumlah", "Dana Requested", "Harga Produk", "status")
@@ -41,8 +41,8 @@ class PembelianBarang:
                     connection.close()
                     cursor.close()
             userPick = 0
-            pick = input("Apakah anda mau menghapus salah satu list? :")
-            userPick = int(input("Pilih ID Table : "))
+            pick = input("\nApakah anda director? : ")
+            userPick = int(input("\nPilih ID Table untuk diApprove : "))
 
     def ifLogicSelectingTbl(self):
         try:
@@ -52,19 +52,18 @@ class PembelianBarang:
                                                         password='password')
 
             cursor = connection.cursor()
-            sql_Delete_query = """Delete from penjualankelompok1 where id = %s"""
+            sql_Delete_query = """UPDATE penjualankelompok1 SET status='Approved' where id = %s"""
             # row to delete
             cursor.execute(sql_Delete_query, (userPick,))
             connection.commit()
-            print("Record Deleted successfully ")
+            print("Procurement Approved successfully ")
 
         except mysql.connector.Error as error:
-            print("Failed to Delete record from table: {}".format(error))
+            print("Failed to Edit record from table: {}".format(error))
         finally:
             if connection.is_connected():
                 cursor.close()
                 connection.close()
-                print("MySQL connection is closed")
 
 ##start program with inheritance
 

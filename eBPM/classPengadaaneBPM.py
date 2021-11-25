@@ -58,9 +58,9 @@ def sqlQuery():
                                             user='root',
                                             password='password')
 
-        mySql_insert_query = """INSERT INTO penjualankelompok1 (id, noPO, namaProduk, jumlahProduk, dana, hargaProduk) 
+        mySql_insert_query = """INSERT INTO penjualankelompok1 (id, noPO, namaProduk, jumlahProduk, dana, hargaProduk, status) 
                            VALUES 
-                           (NULL, %s, %s, %s, %s, %s) """ % (noPO, namaProduk, jumlahProduk, danaRequested, hargaBarang)
+                           (NULL, %s, '%s', %s, %s, %s, 'NOT APPROVED') """ % (noPO, namaProduk, jumlahProduk, danaRequested, hargaBarang)
         cursor = connection.cursor()
         cursor.execute(mySql_insert_query)
         connection.commit()
