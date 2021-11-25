@@ -1,5 +1,5 @@
 print("-------------------------------------------------------------------")
-print("                    Welcome to eBPM Procurement")
+print("     Welcome to eBPM (enterprises-Business Process Management)")
 print("-------------------------------------------------------------------")
 Enter = input("Tekan Enter Untuk Melanjutkan...")
 
