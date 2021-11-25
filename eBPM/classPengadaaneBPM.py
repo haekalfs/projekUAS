@@ -12,6 +12,7 @@ jumlahPengadaan = int(input("Berapa form pengadaan barang?...\n"))
 
 print("\nLoading...")
 
+#mylist
 listProcurement = []
 totalHarga = []
 
