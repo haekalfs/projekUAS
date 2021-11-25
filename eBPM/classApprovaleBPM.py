@@ -2,6 +2,7 @@ from prettytable import PrettyTable
 import mysql.connector
 
 tblList = PrettyTable()
+tblListreRead = PrettyTable()
 
 print("-------------------------------------------------------------------")
 print("                    Welcome to eBPM Approval")
@@ -12,7 +13,7 @@ userChoice = input("Apakah anda ingin melakukan proses Approval Pengadaan Barang
 enter = input("Tekan enter untuk melanjutkan...\n")
 
 class ApprovalBarang:
-    def sqlQueryRead(qry):
+    def sqlQueryRead(self):
             global pick
             global userPick
             try:
@@ -56,7 +57,7 @@ class ApprovalBarang:
             # row to delete
             cursor.execute(sql_Delete_query, (userPick,))
             connection.commit()
-            print("Procurement Approved successfully ")
+            print("Procurement Approved successfully \n")
 
         except mysql.connector.Error as error:
             print("Failed to Edit record from table: {}".format(error))
@@ -65,11 +66,37 @@ class ApprovalBarang:
                 cursor.close()
                 connection.close()
 
+    def sqlreReadQuery(refresh):
+        try:
+            connection2 = mysql.connector.connect(host='localhost',
+                                                    database='ebpm',
+                                                    user='root',
+                                                    password='password')
+
+            sql_select_Query = "select * from penjualankelompok1"
+            cursor = connection2.cursor()
+            cursor.execute(sql_select_Query)
+            # get all records
+            records = cursor.fetchall()
+
+            print("\nRefreshing Table....")
+            tblListreRead.field_names = ("ID","Nomor PO", "Nama Barang", "Jumlah", "Dana Requested", "Harga Produk", "status")
+            for row in records:
+                tblListreRead.add_row([row[0],row[1],row[2],row[3],row[4],row[5],row[6]])
+            print(tblListreRead)
+        except mysql.connector.Error as e:
+                print("Error reading data from MySQL table", e)
+        finally:
+            if connection2.is_connected():
+                connection2.close()
+                cursor.close()
+
 ##start program with inheritance
 
 if(userChoice=="Y" or userChoice=="y"):
     ApprovalBarang().sqlQueryRead()
     if(pick=="Y" or pick=="y"):
         ApprovalBarang().ifLogicSelectingTbl()
+        ApprovalBarang().sqlreReadQuery()
 elif(userChoice=="N" or userChoice=="n"):
     print("Thank you for using our program...")
