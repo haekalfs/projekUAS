@@ -1,10 +1,10 @@
+from prettytable import PrettyTable
+tableInfo = PrettyTable()
+
 print("-------------------------------------------------------------------")
 print("     Welcome to eBPM (enterprises-Business Process Management)")
 print("-------------------------------------------------------------------")
 Enter = input("Tekan Enter Untuk Melanjutkan...")
-
-from prettytable import PrettyTable
-tableInfo = PrettyTable()
 
 tableInfo.field_names = ("ID","Program")
 tableInfo.add_row(["BPM1","Pengadaan Barang"])
