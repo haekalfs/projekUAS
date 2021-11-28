@@ -70,7 +70,7 @@ class ApprovalBarang:
             cursor.execute(sql_select_Query)
             # get all records
             records = cursor.fetchall()
-
+            print(records)
             print("\nRefreshing Table....")
             tblListreRead.field_names = ("ID","Nomor PO", "Nama Barang", "Jumlah", "Dana Requested", "Harga Produk", "status")
             for row in records:
