@@ -1,5 +1,4 @@
 from prettytable import PrettyTable
-import mysql.connector
 
 tblBrg = PrettyTable()
 
