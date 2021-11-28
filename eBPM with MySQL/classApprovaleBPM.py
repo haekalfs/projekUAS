@@ -34,7 +34,7 @@ class ApprovalBarang:
                     connection.close()
                     cursor.close()
             userPick = 0
-            pick = input("\nApakah anda director? : ")
+            pick = input("\nApakah anda director? : (Y/n)")
             userPick = int(input("\nPilih ID Table untuk diApprove : "))
 
     def ifLogicSelectingTbl(self):
