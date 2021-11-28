@@ -40,3 +40,11 @@ elif(userChoice=="N" or userChoice=="n"):
     print("Thank you for using our program...")
 else:
     print("Please input y/N as instructed...")
+
+
+
+
+
+
+
+""" Copyright to Haekal Sastradilaga"""

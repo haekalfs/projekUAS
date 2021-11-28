@@ -107,3 +107,9 @@ if(enter=="Y" or enter=="y"):
     startProgram()
 else:
     print("Thank you for using our program... Good Bye...")
+
+
+
+
+
+""" Copyright to Haekal Sastradilaga"""

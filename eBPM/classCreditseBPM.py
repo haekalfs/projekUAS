@@ -3,9 +3,18 @@ from prettytable import PrettyTable
 tblBrg = PrettyTable()
 
 print("-------------------------------------------------------------------")
-print("                    Welcome to eBPM Pembelian")
+print("              Thank you for using our program (eBPM)")
 print("-------------------------------------------------------------------")
 
-userChoice = input("Apakah anda sudah melakukan Request Pengadaan Barang?...(Y/N)\n")
-
 enter = input("Tekan enter untuk melanjutkan...\n")
+
+print("""List Contributors :
+Haekal Sastradilaga : Lead
+Fariz Darmawan : Member
+Rifkhy Eka : Member
+Fauzan : Member
+Nadif : Member """)
+
+
+
+""" Copyright to Haekal Sastradilaga"""
