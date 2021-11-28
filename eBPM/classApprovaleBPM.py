@@ -4,14 +4,6 @@ import mysql.connector
 tblList = PrettyTable()
 tblListreRead = PrettyTable()
 
-print("-------------------------------------------------------------------")
-print("                    Welcome to eBPM Approval")
-print("-------------------------------------------------------------------")
-
-userChoice = input("Apakah anda ingin melakukan proses Approval Pengadaan Barang?...(Y/N)\n")
-
-enter = input("Tekan enter untuk melanjutkan...\n")
-
 class ApprovalBarang:
     def sqlQueryRead(self):
             global pick
@@ -92,6 +84,14 @@ class ApprovalBarang:
                 cursor.close()
 
 ##start program with inheritance
+
+print("-------------------------------------------------------------------")
+print("                    Welcome to eBPM Approval")
+print("-------------------------------------------------------------------")
+
+userChoice = input("Apakah anda ingin melakukan proses Approval Pengadaan Barang?...(Y/N)\n")
+
+enter = input("Tekan enter untuk melanjutkan...\n")
 
 if(userChoice=="Y" or userChoice=="y"):
     ApprovalBarang().sqlQueryRead()

@@ -3,15 +3,6 @@ from mysql.connector import Error
 from prettytable import PrettyTable
 tblForm = PrettyTable()
 
-print("-------------------------------------------------------------------")
-print("                    Welcome to eBPM Procurement")
-print("-------------------------------------------------------------------")
-
-enter = input("Apakah anda yakin ingin melakukan pengadaan barang?...(Y/N)\n")
-jumlahPengadaan = int(input("Berapa form pengadaan barang?...\n"))
-
-print("\nLoading...")
-
 #mylist
 listProcurement = []
 totalHarga = []
@@ -37,20 +28,6 @@ class PengadaanBarang:
         totalHarga.append(hargaBarang * jumlahProduk)
         tblForm.field_names = ("Nomor PO", "Nama Barang", "Jumlah", "Harga Satuan", "Dana Requested")
         tblForm.add_row([noPO,namaProduk,jumlahProduk,'{:,}'.format(hargaBarang),'{:,}'.format(danaRequested)])
-    
-def startProgram():
-    for i in range(jumlahPengadaan):
-        print ("\nForm Pengadaan ke - " + str(i+1))
-        PengadaanBarang().barang()
-        Sum = sum(totalHarga)
-        sqlQuery()
-    print("\nComputing... Please Wait... Creating Form....")
-    print("-------------------------------------------------------------------")
-    print("                         eBPM Procurement")
-    print("-------------------------------------------------------------------")
-    print(tblForm)
-    print("Total Biaya Pengadaan Barang : Rp.",'{:,}'.format(Sum))
-    print("Thank You For Using Our Program, Please wait for Approval by Directors.\n")
 
 def sqlQuery():
     try:
@@ -75,7 +52,33 @@ def sqlQuery():
         if connection.is_connected():
             connection.close()
             print("MySQL connection is closed")
+    
+def startProgram():
+    for i in range(jumlahPengadaan):
+        print ("\nForm Pengadaan ke - " + str(i+1))
+        PengadaanBarang().barang() #Calling Class "PengadaanBarang"
+        Sum = sum(totalHarga)
+        sqlQuery() #Calling Function "sqlQuery"
+    #Output
+    print("\nComputing... Please Wait... Creating Form....")
+    print("-------------------------------------------------------------------")
+    print("                         eBPM Procurement")
+    print("-------------------------------------------------------------------")
+    print(tblForm)
+    print("Total Biaya Pengadaan Barang : Rp.",'{:,}'.format(Sum))
+    print("Thank You For Using Our Program, Please wait for Approval by Directors.\n")
 
+#Start
+print("-------------------------------------------------------------------")
+print("                    Welcome to eBPM Procurement")
+print("-------------------------------------------------------------------")
+
+enter = input("Apakah anda yakin ingin melakukan pengadaan barang?...(Y/N)\n")
+jumlahPengadaan = int(input("Berapa form pengadaan barang?...\n"))
+
+print("\nLoading...")
+
+#Running Program
 if(enter=="Y" or enter=="y"):
     startProgram()
 else:
