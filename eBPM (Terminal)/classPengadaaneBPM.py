@@ -9,8 +9,6 @@ totalHarga = []
 
 class PengadaanBarang:
     def barang(brg):
-        global totalHarga
-        global tblForm
         global noPO
         global namaProduk
         global jumlahProduk
