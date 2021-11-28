@@ -10,7 +10,7 @@ print("                    Welcome to eBPM Approval")
 print("-------------------------------------------------------------------")
 
 enter = input("Tekan enter untuk melanjutkan...\n")
-userChoice = input("Apakah anda ingin melakukan proses Approval Pengadaan Barang?...(Y/N) :")
+userChoice = input("Apakah anda ingin melakukan proses Approval 'Pengadaan Barang'?...(Y/N) :")
 print("-------------------------------------------------------------------")
 print("Pilih File Form Cetak Pengadaan Barang Yang Ingin di Approve...\n")
 
