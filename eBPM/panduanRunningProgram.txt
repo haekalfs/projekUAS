@@ -1,0 +1,4 @@
+1. Download semua file yang ada di folder eBPM
+2. masukan semua file menjadi 1 folder yang bernama eBPM
+3. jika masih error, perhatikan struktur foldernya.
+4. kontak gua klo ttp gabisa
