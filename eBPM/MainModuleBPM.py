@@ -15,11 +15,11 @@ print(tableInfo)
 
 userInputChoice = input("Ketik ID Program yang ingin dijalankan...\n")
 
-if (userInputChoice=="BPM1" or userInputChoice=="bpm1"or userInputChoice=="Bpm2"or userInputChoice=="bpM2"or userInputChoice=="BPm2"):
+if (userInputChoice=="BPM1" or userInputChoice=="bpm1"or userInputChoice=="Bpm1"or userInputChoice=="bpM1"or userInputChoice=="BPm1"):
     import classPengadaaneBPM
 elif (userInputChoice=="BPM2" or userInputChoice=="bpm2" or userInputChoice=="Bpm2" or userInputChoice=="Bpm2"or userInputChoice=="bpM2"):
     import classApprovaleBPM
-elif (userInputChoice=="BPM3" or userInputChoice=="bpm3" or userInputChoice=="Bpm3" or userInputChoice=="bPm3"or userInputChoice=="BPm2"):
+elif (userInputChoice=="BPM3" or userInputChoice=="bpm3" or userInputChoice=="Bpm3" or userInputChoice=="bPm3"or userInputChoice=="BPm3"):
     import classCreditseBPM
 else:
     print("Error occured, please try again...")
