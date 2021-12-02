@@ -15,6 +15,6 @@ Rifkhy Eka : Member
 Fauzan : Member
 Nadif : Member """)
 
-
+#Kodingan diatas hanya untuk print list kontribusi anggota kelompok saya
 
 """ Copyright to Haekal Sastradilaga"""

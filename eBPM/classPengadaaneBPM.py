@@ -1,11 +1,13 @@
+#ini kodingan untuk import lib package, pretty table, dan fpdf untuk generate pdf otomatis
 from prettytable import PrettyTable
 from fpdf import FPDF
 tblForm = PrettyTable()
 
-#mylist
+#ini variable list
 listProcurement = []
 totalHarga = []
 
+#kemudian ada class PengadaanBarang, dimana ini adalah kodingan user input & appending ke list
 class PengadaanBarang:
     def barang(brg):
         global noPO
@@ -22,10 +24,13 @@ class PengadaanBarang:
         hargaBarang = int(input("Input Harga Satuan Barang         : "))
         danaRequested = int(input("Input Dana yang direquest         : "))
         print("-------------------------------------------------------------------\n")
-        totalHarga.append(hargaBarang * jumlahProduk)
+        totalHarga.append(hargaBarang * jumlahProduk) #hitung total harga dan ditambahkan ke list diatas "totalHarga"
+        #kodingan dibawah fungsinya untuk insert data ke pretty table, tblform field names untuk baris atasnya
         tblForm.field_names = ("Nomor PO", "Nama Barang", "Jumlah", "Harga Satuan", "Dana Requested")
+        #sedangkan tblform add row untuk insert datanya, dimana datanya didapat dari variable-variable diatas
         tblForm.add_row([noPO,namaProduk,jumlahProduk,'{:,}'.format(hargaBarang),'{:,}'.format(danaRequested)])
 
+#ini fungsi nya untuk generate pdf setelah kita melakukan user input, umpamanya seperti adanya invoice setelah pembelian barang
 def createPDF():
     global pdf
     pdf = FPDF()
@@ -76,13 +81,15 @@ def createPDF():
     pdf.cell(200, 10, txt = "Copyright to : Mahasiswa UBSI",
             ln = 21, align = 'C')
 
+#kodingan dibawah fungsinya untuk menjalankan kodingan secara ber-urutan, dan kita tinggal panggil fungsi ini startProgram()
+# maka dia akan running fungsi" diatas secara berurutan
 def startProgram():
-    for i in range(jumlahPengadaan):
+    for i in range(jumlahPengadaan): #pertama dia akan running looping
         print ("\nForm Pengadaan ke - " + str(i+1))
-        PengadaanBarang().barang() #Calling Class "PengadaanBarang"
-        Sum = sum(totalHarga)
-        createPDF()
-        pdf.output('eBPM/outputFormPengadaan/Form Pengadaan eBPM' + str(i) + '.pdf') 
+        PengadaanBarang().barang() #kedua dia akan memanggil Class "PengadaanBarang"
+        Sum = sum(totalHarga) #ketiga dia akan menghitung jumlah di list totalHarga
+        createPDF() # keempat kita atur biar dia generate pdf dengan memanggil fungsi def createPDF()
+        pdf.output('eBPM/outputFormPengadaan/Form Pengadaan eBPM' + str(i) + '.pdf') #terakhir kita cetak pdfnya
     #Output
     print("\nComputing... Please Wait... Creating Form....")
     print("-------------------------------------------------------------------")
@@ -92,17 +99,17 @@ def startProgram():
     print("Total Biaya Pengadaan Barang : Rp.",'{:,}'.format(Sum))
     print("Thank You For Using Our Program, Please wait for Approval by Directors.\n")
 
-#Start
+#kode dibawah adalah tampilan awal program
 print("-------------------------------------------------------------------")
 print("                    Welcome to eBPM Procurement")
 print("-------------------------------------------------------------------")
 
-enter = input("Apakah anda yakin ingin melakukan pengadaan barang?...(Y/N)\n")
-jumlahPengadaan = int(input("Berapa form pengadaan barang?...\n"))
+enter = input("Apakah anda yakin ingin melakukan pengadaan barang?...(Y/N)\n") #jika user tekan y maka program jalan jika n maka akan gagal
+jumlahPengadaan = int(input("Berapa form pengadaan barang?...\n")) #ini fungsinya untuk user input brp bnyk form yang mau diinput
 
 print("\nLoading...")
 
-#Running Program
+#Running Program dengan if statement, jika user input y maka program jalan, selain itu user akan stop programnnya
 if(enter=="Y" or enter=="y"):
     startProgram()
 else:
