@@ -22,21 +22,16 @@ print("Pilih File Form Cetak Pengadaan Barang Yang Ingin di Approve...\n")
 if(userChoice=="Y" or userChoice=="y"):
     #dua baris dibawah adalah popup menu
     file_path = filedialog.askopenfilename()
-    fileReader = PyPDF2.PdfFileReader(file_path) #read file yang dipilih
-    #dua baris dibawah hanya hiasan
+    fileReader = PyPDF2.PdfFileReader(file_path)                    #read file yang dipilih
     print("Please Wait... Creating Form...\n")
     print("Approving Form... Creating Sign...\n")
-    #baris dibawah fungsinya untuk read file approve.pdf, yang nntinya akan di gabungkan ke file yg user pilih tadi
     pdfTwo = PyPDF2.PdfFileReader(open("eBPM/approve.pdf", "rb"))
-    #variable output, untuk write file pdf
     output = PdfFileWriter()
-    #output akan menggabungkan file approve.pdf dengan file yang user pilih td
-    output.addPage(pdfTwo.getPage(0))#approve.pdf
-    output.addPage(fileReader.getPage(0))#file user
+    output.addPage(pdfTwo.getPage(0))
+    output.addPage(fileReader.getPage(0))
 
     #variable outputStream fungsinya untuk menentukan letak folder yang nntinya akan jd tmpat file pdf baru
     outputStream = open(r"eBPM/outputFormApproval/Form Pengadaan (Approved).pdf", "wb")
-    #baris dibawah untuk men save file pdf yg digabungkan td ke folder outputStream
     output.write(outputStream)
     outputStream.close() #close
     print("-------------------------------------------------------------------")

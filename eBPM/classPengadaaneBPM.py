@@ -24,10 +24,9 @@ class PengadaanBarang:
         hargaBarang = int(input("Input Harga Satuan Barang         : "))
         danaRequested = int(input("Input Dana yang direquest         : "))
         print("-------------------------------------------------------------------\n")
-        totalHarga.append(hargaBarang * jumlahProduk) #hitung total harga dan ditambahkan ke list diatas "totalHarga"
+        totalHarga.append(hargaBarang * jumlahProduk)                                                           #hitung total harga dan ditambahkan ke list diatas "totalHarga"
         #kodingan dibawah fungsinya untuk insert data ke pretty table, tblform field names untuk baris atasnya
         tblForm.field_names = ("Nomor PO", "Nama Barang", "Jumlah", "Harga Satuan", "Dana Requested")
-        #sedangkan tblform add row untuk insert datanya, dimana datanya didapat dari variable-variable diatas
         tblForm.add_row([noPO,namaProduk,jumlahProduk,'{:,}'.format(hargaBarang),'{:,}'.format(danaRequested)])
 
 #ini fungsi nya untuk generate pdf setelah kita melakukan user input, umpamanya seperti adanya invoice setelah pembelian barang
@@ -83,13 +82,14 @@ def createPDF():
 
 #kodingan dibawah fungsinya untuk menjalankan kodingan secara ber-urutan, dan kita tinggal panggil fungsi ini startProgram()
 # maka dia akan running fungsi" diatas secara berurutan
+
 def startProgram():
-    for i in range(jumlahPengadaan): #pertama dia akan running looping
+    for i in range(jumlahPengadaan):                                                    #pertama dia akan running looping
         print ("\nForm Pengadaan ke - " + str(i+1))
-        PengadaanBarang().barang() #kedua dia akan memanggil Class "PengadaanBarang"
-        Sum = sum(totalHarga) #ketiga dia akan menghitung jumlah di list totalHarga
-        createPDF() # keempat kita atur biar dia generate pdf dengan memanggil fungsi def createPDF()
-        pdf.output('eBPM/outputFormPengadaan/Form Pengadaan eBPM' + str(i) + '.pdf') #terakhir kita cetak pdfnya
+        PengadaanBarang().barang()                                                      #kedua dia akan memanggil Class "PengadaanBarang"
+        Sum = sum(totalHarga)                                                           #ketiga dia akan menghitung jumlah di list totalHarga
+        createPDF()                                                                     # keempat kita atur biar dia generate pdf dengan memanggil fungsi def createPDF()
+        pdf.output('eBPM/outputFormPengadaan/Form Pengadaan eBPM' + str(i) + '.pdf')    #terakhir kita cetak pdfnya
     #Output
     print("\nComputing... Please Wait... Creating Form....")
     print("-------------------------------------------------------------------")
@@ -104,8 +104,8 @@ print("-------------------------------------------------------------------")
 print("                    Welcome to eBPM Procurement")
 print("-------------------------------------------------------------------")
 
-enter = input("Apakah anda yakin ingin melakukan pengadaan barang?...(Y/N)\n") #jika user tekan y maka program jalan jika n maka akan gagal
-jumlahPengadaan = int(input("Berapa form pengadaan barang?...\n")) #ini fungsinya untuk user input brp bnyk form yang mau diinput
+enter = input("Apakah anda yakin ingin melakukan pengadaan barang?...(Y/N)\n")          #jika user tekan y maka program jalan jika n maka akan gagal
+jumlahPengadaan = int(input("Berapa form pengadaan barang?...\n"))                      #ini fungsinya untuk user input brp bnyk form yang mau diinput
 
 print("\nLoading...")
 
